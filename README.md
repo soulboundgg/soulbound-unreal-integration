@@ -5,7 +5,7 @@ This plugin behaves as an Analytics Provider for Unreal Engine 4.
 ## Requirements
 
 - Unreal Engine 4.26
-- [SoulBound API Key](https://mainframe.soulbound.gg) (Create a user followed by a game and get the api key for staging or production environment)
+- Get SoulBound API Key at (https://mainframe.soulbound.gg) (Create a user followed by a game and get the api key for staging or production environment)
 
 ## Getting Started
 
