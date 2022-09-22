@@ -65,6 +65,35 @@ SendInterval=10
 ```
 
 Save the file and restart Unreal Engine Editor.
+### Gather metrics through C++ code
+Following code section explains how to use the sdk using code. The UserID shoud be set before beginning the session so that all events have the identity attached.
+
+Include analytics modules where events need to be recorded.
+
+```
+#include "Runtime/Analytics/Analytics/Public/Analytics.h"
+#include "Runtime/Analytics/Analytics/Public/Interfaces/IAnalyticsProvider.h"
+```
+Events are how users interact with your game. "Game Started" may be an action you want to record.
+
+```
+FAnalytics::Get().GetDefaultConfiguredProvider()->SetUserID(TEXT("test123@test.com"));
+FAnalytics::Get().GetDefaultConfiguredProvider()->StartSession();
+FAnalytics::Get().GetDefaultConfiguredProvider()->RecordEvent(TEXT("Game started"));
+```
+Events can contain properties. Properties give more information about the event taken.
+```
+TArray<FAnalyticsEventAttribute> AppendedAttributes;
+AppendedAttributes.Emplace(TEXT("Test Event Prop key1"), TEXT("Test Event value1"));
+AppendedAttributes.Emplace(TEXT("Test Event Prop key2"), TEXT("Test Event value2"));
+FAnalytics::Get().GetDefaultConfiguredProvider()->RecordEvent(TEXT("Game Started"), AppendedAttributes);
+
+FAnalytics::Get().GetDefaultConfiguredProvider()->SetLocation(TEXT("Test location"));
+FAnalytics::Get().GetDefaultConfiguredProvider()->SetGender(TEXT("Test gender"));
+	
+FAnalytics::Get().GetDefaultConfiguredProvider()->EndSession();
+```
+
 
 ### Gather metrics through Blueprints
 
