@@ -87,13 +87,10 @@ TArray<FAnalyticsEventAttribute> AppendedAttributes;
 AppendedAttributes.Emplace(TEXT("Test Event Prop key1"), TEXT("Test Event value1"));
 AppendedAttributes.Emplace(TEXT("Test Event Prop key2"), TEXT("Test Event value2"));
 FAnalytics::Get().GetDefaultConfiguredProvider()->RecordEvent(TEXT("Game Started"), AppendedAttributes);
-```
-User properties could also be set.
-```
+
 FAnalytics::Get().GetDefaultConfiguredProvider()->SetLocation(TEXT("Test location"));
 FAnalytics::Get().GetDefaultConfiguredProvider()->SetGender(TEXT("Test gender"));
-```
-```
+	
 FAnalytics::Get().GetDefaultConfiguredProvider()->EndSession();
 ```
 
